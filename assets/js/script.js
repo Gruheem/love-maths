@@ -1,4 +1,4 @@
-//Wait fo rht eDOM to finish loading before running the game
+//Wait for the DOM to finish loading before running the game
 //Get the button elements and add event listeners to them
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -13,6 +13,11 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+  document.getElementById("answer-box").addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      checkAnswer();
+    }
+  })
   runGame("addition");
 });
 
@@ -20,6 +25,11 @@ document.addEventListener("DOMContentLoaded", function () {
  * The main game"loop", callede when the script is first loaded and after the user's answer has been processed
  */
 function runGame(gameType) {
+  //Clear the answer box
+  document.getElementById("answer-box").value = "";
+  //setting the focus
+  document.getElementById("answer-box").focus();
+
   let num1 = Math.floor(Math.random() * 25) + 1;
   let num2 = Math.floor(Math.random() * 25) + 1;
 
